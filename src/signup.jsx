@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 import images from './assets/rooms.jpeg';
 import background from './assets/room.gif';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-
 export default function Signup(){
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  
+  const [Email,setEmail]=useState('')
+const [Password,setPassword]=useState('')
+const [Name,setname]=useState('')
+const [location,setlocation]=useState('')
+useEffect(() => {
+  const auth = localStorage.getItem("auth");
+  if (auth) {
+    navigate("/");
+  }
+}, []);
+
+const collectData = async (e) => {
+  e.preventDefault(); // Corrected syntax
+
+  console.warn(Name, Email, Password);
+  let result = await fetch('http://localhost:3000/signup', { // Added http:// to the URL
+    method: 'post',
+    body: JSON.stringify({ Name, Password, Email, location }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+
+  result = await result.json();
+  console.log(result);
+  if (result) {
+    await navigate('/login'); // Added await for navigate
+  }
+  localStorage.setItem("user", JSON.stringify(result));
+}
 
     return (
         <>
