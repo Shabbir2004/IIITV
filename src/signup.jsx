@@ -47,22 +47,22 @@ const collectData = async (e) => {
   <body className="bg-gradient-to-r from-cyan-800 to bg-cyan-950">
 
     <div className="h-screen flex justify-center items-center p-4 h-800px ">
-        <div className="flex flex-col gap-y-9 w-[300px]  border-gray-400 m-4 p-2 rounded-xl  ">
-            <h2 className="text-4xl font-extrabold text-white ">Register</h2>
-            <form className="flex flex-col gap-y-6 border-3 border-black">
-                <input type="text" placeholder="Provider's Name" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black" value={Name} onChange={(e)=>setname(e.target.value)}/>
-                <input type="text" placeholder="Location" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black" value={location} onChange={(e)=>setlocation(e.target.value)}/>
-                <input type="text" placeholder="Email" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black" value={Email} onChange={(e)=>setEmail(e.target.value)}/> 
-                <input type="password" placeholder="Password" className="text-sm p-2 rounded-2xl bg-white-200 outline-nonetracking-widest text-black" value={Password} onChange={(e)=>setPassword(e.target.value)}/>
-                <button onClick={collectData} value="Register" className="bg-green-200 text-black tracking-wider p-2 rounded-2xl hover:bg-cyan-500 transition">Submit </button>
-                <h1>{Name}</h1>
+        <div className="flex flex-col gap-y-9 w-[300px]  border-gray-400 m-4 p-1 rounded-xl  ">
+            <button className="text-4xl font-extrabold text-white " onClick={()=>{Navigate("/provdet")}}>Register</button> 
+            <form className="flex flex-col gap-y-8 border-3 border-black">
+                <input type="text" placeholder="Provider's Name" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black"/>
+                <input type="text" placeholder="Location" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
+                <input type="text" placeholder="Email" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
+                <input type="password" placeholder="Password" className="text-sm p-2 rounded-2xl bg-white-200 outline-nonetracking-widest text-black"/>
+
+                <input type="submit" onClick={()=>{Navigate("/provdet")}} value="Register" className="bg-green-200 text-black tracking-wider p-2 rounded-2xl hover:bg-cyan-500 transition"/>
 
             </form>
       
           
             <div className="flex flex-col items-start gap-y-3">
-                <p className="text-sm text-white font-bold">Already have an account?</p>
-                <button className="bg-red-400 text-white px-4 py-1 rounded-2xl text-sm tracking-wider hover:bg-red-500 transition">Login</button>
+                <p className="text-sm text-white font-bold" >Already have an account?</p>
+                <button className="bg-red-400 text-white px-4 py-1 rounded-2xl text-sm tracking-wider hover:bg-red-500 transition" >Login</button>
             
             </div>
         </div>

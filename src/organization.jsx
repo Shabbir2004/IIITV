@@ -1,35 +1,43 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import my from './assets/five.jpg';
+import my from './assets/room.gif';
 
 export default function Organization(){
     const Navigate = useNavigate();
     return(
         <>
-      <div className="relative flex h-screen w-screen">
-  <div className="w-1/2 h-full">
-    <img src={my} className="h-full w-full object-cover" alt="" />
-  </div>
+     <body className="bg-gradient-to-r from-cyan-800 to bg-cyan-950">
 
-  <div className="w-1/2 flex justify-center items-center">
-    <div className="w-[30%] p-4 backdrop-blur-md rounded-xl border-2 border-slate-300">
-      <h1 className="text-3xl font-bold text-white font-mono mb-4">Register</h1>
+<div className="h-screen flex justify-center items-center p-4 h-800px ">
+    <div className="flex flex-col gap-y-9 w-[300px]  border-gray-400 m-4 p-1 rounded-xl  ">
+        <button className="text-4xl font-extrabold text-white " onClick={()=>{Navigate("/provdet")}}>Organization Details</button> 
+        <form className="flex flex-col gap-y-8 border-3 border-black">
+            <input type="text" placeholder="Provider's Name" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black"/>
+            {/* <input type="text" placeholder="Supporting Proofs Of Your Organization" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black"/> */}
+
+            <input type="text" placeholder="Location" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
+            <input type="text" placeholder="Email" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
+            <input type="password" placeholder="Password" className="text-sm p-2 rounded-2xl bg-white-200 outline-nonetracking-widest text-black"/>
+
+            <input type="submit" onClick={()=>{Navigate("/orgdet")}} value="Register" className="bg-green-200 text-black tracking-wider p-2 rounded-2xl hover:bg-cyan-500 transition"/>
+
+        </form>
+  
       
-      <form action="" className="space-y-4">
-        <input type="text" placeholder="Provider's Name" className="w-full p-3 rounded-full text-black" />
-        <input type="text" placeholder="Location" className="w-full p-3 rounded-full text-black" />
-        <input type="email" placeholder="Email" className="w-full p-3 rounded-full text-black" />
-        <input type="password" placeholder="Password" className="w-full p-3 rounded-full text-black" />
-        <button className="w-full p-3 rounded-full bg-blue-700 text-white font-semibold" onClick={()=>{Navigate("/orgdet")}}>Sign In</button>
-      </form>
-
-      <div className="text-center mt-4">
-        <span className="text-slate-200">Already have an account? </span>
-        <button className="text-blue-700 font-semibold" onClick={()=>{Navigate("/org")}}>Login</button>
-      </div>
+        <div className="flex flex-col items-start gap-y-3">
+            <p className="text-sm text-white font-bold" >Already have an account?</p>
+            <button className="bg-red-400 text-white px-4 py-1 rounded-2xl text-sm tracking-wider hover:bg-red-500 transition" >Login</button>
+        
+        </div>
     </div>
-  </div>
+    <div className="relative w-[600px] grid place-items-center">
+    
+      {/* <img src={images} alt="" className="absolute rounded-2xl m-4"/> */}
+      <img src={my} alt="" className=" rounded-2xl m-4" id="animation" />
+    </div>
 </div>
+</body>
+ 
         </>
     )
 }
