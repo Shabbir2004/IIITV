@@ -24,17 +24,23 @@ const Provdet=()=>{
                 </div>
                 
                 <div className="w-full flex flex-col">
-                  <input type="text" placeholder="Type of food (Veg Or Non-Veg)" className="w-full text-white py-4 my-2 bg-transparent bg-none border-b border-black outline-none focus:outline-none"/>
+                  <input type="text" placeholder="Type of food (Raw Or Readymade)" className="w-full text-white py-4 my-2 bg-transparent bg-none border-b border-black outline-none focus:outline-none"/>
 
                   <input type="text" placeholder="Name of food" className="w-full text-white py-4 my-4 bg-transparent bg-none border-b border-black outline-none focus:outline-none"/>
 
                   <input type="text" placeholder="Quantity of food" className="w-full text-white py-4 bg-transparent my-4 bg-none border-b border-black outline-none focus:outline-none"/>
 
-                  <input type="text" placeholder="Pick Up Time Slot" className="w-full text-white py-4 bg-transparent my-4 bg-none border-b border-black outline-none focus:outline-none"/>
+                  <input type="text" placeholder="Pick Up Time Slot(Morning , Afternoon or Evening)" className="w-full text-white py-4 bg-transparent my-4 bg-none border-b border-black outline-none focus:outline-none"/>
 
-                  <input type="date" placeholder="Manifacture Date" className="w-full text-white py-4 my-4 bg-transparent bg-none border-b border-black outline-none focus:outline-none"/>
+                  <div class=" ">
+          <label for="deliveryAddress" class="block text-xl font-semibold mb-2 text-white">Manifacture Date</label>
+          <input type="date" id="deliveryAddress" class="w-full text-white py-4 my-4 bg-transparent bg-none border-b border-black outline-none focus:outline-none" placeholder="Enter"/>
+        </div>
 
-                  <input type="date" placeholder="Expiry Date" className="w-full text-white py-4 my-4 bg-transparent bg-none border-b border-black outline-none focus:outline-none"/>
+        <div class=" ">
+          <label for="deliveryAddress" class="block text-xl font-semibold mb-2 text-white">Expiry Date</label>
+          <input type="date" id="deliveryAddress" class="w-full text-white py-4 my-4 bg-transparent bg-none border-b border-black outline-none focus:outline-none" placeholder="Enter"/>
+        </div>
                 </div>
 
                 <div className="w-full flex flex-col">
