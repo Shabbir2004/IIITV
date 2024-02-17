@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 import images from './assets/rooms.jpeg';
 import background from './assets/room.gif';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-
 export default function Signup(){
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  
+  const [Email,setEmail]=useState('')
+const [Password,setPassword]=useState('')
+const [Name,setname]=useState('')
+const [location,setlocation]=useState('')
+useEffect(() => {
+  const auth = localStorage.getItem("auth");
+  if (auth) {
+    navigate("/");
+  }
+}, []);
+
+const collectData = async (e) => {
+  e.preventDefault(); // Corrected syntax
+
+  console.warn(Name, Email, Password);
+  let result = await fetch('http://localhost:3000/signup', { // Added http:// to the URL
+    method: 'post',
+    body: JSON.stringify({ Name, Password, Email, location }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+
+  result = await result.json();
+  console.log(result);
+  if (result) {
+    await navigate('/login'); // Added await for navigate
+  }
+  localStorage.setItem("user", JSON.stringify(result));
+}
 
     return (
         <>
@@ -19,12 +50,12 @@ export default function Signup(){
         <div className="flex flex-col gap-y-9 w-[300px]  border-gray-400 m-4 p-2 rounded-xl  ">
             <h2 className="text-4xl font-extrabold text-white ">Register</h2>
             <form className="flex flex-col gap-y-6 border-3 border-black">
-                <input type="text" placeholder="Provider's Name" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black"/>
-                <input type="text" placeholder="Location" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
-                <input type="text" placeholder="Email" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black"/>
-                <input type="password" placeholder="Password" className="text-sm p-2 rounded-2xl bg-white-200 outline-nonetracking-widest text-black"/>
-
-                <input type="submit" value="Register" className="bg-green-200 text-black tracking-wider p-2 rounded-2xl hover:bg-cyan-500 transition"/>
+                <input type="text" placeholder="Provider's Name" className="text-sm p-2 rounded-2xl bg-white outline-none tracking-widest  text-black" value={Name} onChange={(e)=>setname(e.target.value)}/>
+                <input type="text" placeholder="Location" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black" value={location} onChange={(e)=>setlocation(e.target.value)}/>
+                <input type="text" placeholder="Email" className="text-sm p-2 rounded-2xl bg-white outline-nonetracking-widest text-black" value={Email} onChange={(e)=>setEmail(e.target.value)}/> 
+                <input type="password" placeholder="Password" className="text-sm p-2 rounded-2xl bg-white-200 outline-nonetracking-widest text-black" value={Password} onChange={(e)=>setPassword(e.target.value)}/>
+                <button onClick={collectData} value="Register" className="bg-green-200 text-black tracking-wider p-2 rounded-2xl hover:bg-cyan-500 transition">Submit </button>
+                <h1>{Name}</h1>
 
             </form>
       
